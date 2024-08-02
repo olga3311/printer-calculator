@@ -11,8 +11,11 @@ public class Main {
     public static void main(String[] args) {
 
         FilePrinter filePrinter = new FilePrinter();
+
         MathCalculator mathCalculator = new MathCalculator(filePrinter);
+
         Scanner scanner = new Scanner(System.in);
+
         StringParser stringParser = new StringParser(mathCalculator, scanner);
 
         stringParser.parse();
