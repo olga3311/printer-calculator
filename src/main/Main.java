@@ -1,8 +1,14 @@
 package main;
 
 import calculator.MathCalculator;
+import operation.Operation;
+import operationHistory.FileOperationHistory;
+import operationHistory.OperationHistory;
 import parser.StringParser;
+import printer.ConsolePrinter;
 import printer.FilePrinter;
+import printer.Printer;
+import printer.PrinterSelection;
 
 import java.util.Scanner;
 
@@ -10,17 +16,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        FilePrinter filePrinter = new FilePrinter();
+        PrinterSelection printerSelection = new PrinterSelection();
+        Printer printer =  printerSelection.choosePrinter();
 
-        MathCalculator mathCalculator = new MathCalculator(filePrinter);
+        FileOperationHistory fileOperationHistory = new FileOperationHistory("~/IdeaProjects/printer-calculator/operationHistory.txt");
+
+        MathCalculator mathCalculator = new MathCalculator(printer, fileOperationHistory);
 
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("enter the equation: ");
         StringParser stringParser = new StringParser(mathCalculator, scanner);
 
         stringParser.parse();
 
         scanner.close();
+
+        fileOperationHistory.saveOperation();
     }
 
 }
