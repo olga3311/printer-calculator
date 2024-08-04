@@ -19,7 +19,8 @@ public class Main {
         PrinterSelection printerSelection = new PrinterSelection();
         Printer printer =  printerSelection.choosePrinter();
 
-        FileOperationHistory fileOperationHistory = new FileOperationHistory("~/IdeaProjects/printer-calculator/operationHistory.txt");
+        String fileName = "operationHistory.txt";
+        FileOperationHistory fileOperationHistory = new FileOperationHistory(fileName);
 
         MathCalculator mathCalculator = new MathCalculator(printer, fileOperationHistory);
 

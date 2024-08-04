@@ -17,44 +17,41 @@ public class FileOperationHistory implements OperationHistory {
     public FileOperationHistory(String fileName) {
         this.fileName = fileName;
         this.operationList = new ArrayList<>();
-
-       // try {
-           // this.load();
-       // }
-       // catch ( FileNotFoundException e){
-       //     System.out.println("cannot load the history");
-       //     e.printStackTrace();
-       // }
+        load();
     }
 
     @Override
     public void addOperation(Operation operation) {
-    operationList.add(operation);
+        operationList.add(operation);
     }
 
 
-
-    public void saveOperation (){
+    public void saveOperation() {
 
         try {
-        PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
-        for (Operation operation : operationList)
-            pw.println(operation);
-        pw.close();}
-        catch (FileNotFoundException e){
-            System.out.println("Cannot save history. ");
+            PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
+            for (Operation operation : operationList)
+                pw.println(operation);
+            pw.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot save history.");
             e.printStackTrace();
         }
     }
 
 
-    public void load () throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter(new FileOutputStream(fileName));
-        for (Operation operation : operationList)
-            pw.println(operation);
+    public void load() {
 
-        pw.close();
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            for (String line; (line = br.readLine()) != null; ) {
+                addOperation(new Operation(line));
+            }
+
+        } catch (IOException e) {
+            System.out.println("Cannot load the history.");
+            e.printStackTrace();
+        }
     }
-
-
 }
+

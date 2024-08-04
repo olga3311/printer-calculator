@@ -11,6 +11,28 @@ public class Operation {
     private double result;
     private LocalDateTime localDateTime;
 
+    public Operation(String s) {
+        s = s.substring(10, s.length() - 1);
+        String[] sl = s.split(",");
+
+        for (int i = 0; i < sl.length; i++) {
+            String[] pair = sl[i].split("=");
+
+            switch (pair[0].trim()) {
+                case "first" -> first = Double.parseDouble(pair[1]);
+
+                case "second" -> second = Double.parseDouble(pair[1]);
+
+                case "operator"-> operator = Operator.findByString(pair[1]);
+
+                case "result" -> result = Double.parseDouble(pair[1]);
+
+                case "time" -> localDateTime = LocalDateTime.parse(pair[1]);
+
+            }
+        }
+    }
+
     public Operation(double first, double second, Operator operator, double result, LocalDateTime localDateTime) {
         this.first = first;
         this.second = second;
