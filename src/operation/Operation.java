@@ -23,11 +23,11 @@ public class Operation {
 
                 case "second" -> second = Double.parseDouble(pair[1]);
 
-                case "operator"-> operator = Operator.findByString(pair[1]);
+                case "operator"-> operator = Operator.valueOf(pair[1]);
 
                 case "result" -> result = Double.parseDouble(pair[1]);
 
-                case "time" -> localDateTime = LocalDateTime.parse(pair[1]);
+                case "localDateTime" -> localDateTime = LocalDateTime.parse(pair[1]);
 
             }
         }

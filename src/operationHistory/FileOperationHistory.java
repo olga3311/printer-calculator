@@ -4,9 +4,11 @@ import operation.Operation;
 import operator.Operator;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class FileOperationHistory implements OperationHistory {
 
@@ -18,6 +20,7 @@ public class FileOperationHistory implements OperationHistory {
         this.fileName = fileName;
         this.operationList = new ArrayList<>();
         load();
+        cleanUpHistory();
     }
 
     @Override
@@ -52,6 +55,16 @@ public class FileOperationHistory implements OperationHistory {
             System.out.println("Cannot load the history.");
             e.printStackTrace();
         }
+    }
+
+    public void cleanUpHistory(){
+
+        List<Operation> temp  = operationList.stream()
+                .filter((operation) -> LocalDateTime.now().minusDays(1).isBefore(operation.getLocalDateTime()))
+                .toList();
+
+                operationList = new ArrayList<Operation>(temp);
+        System.out.println(temp);
     }
 }
 
