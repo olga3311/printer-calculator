@@ -1,12 +1,7 @@
 package main;
-
 import calculator.MathCalculator;
-import operation.Operation;
 import operationHistory.FileOperationHistory;
-import operationHistory.OperationHistory;
 import parser.StringParser;
-import printer.ConsolePrinter;
-import printer.FilePrinter;
 import printer.Printer;
 import printer.PrinterSelection;
 
