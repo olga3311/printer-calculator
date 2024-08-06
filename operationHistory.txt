@@ -1,0 +1,7 @@
+Operation{first=1.0, second=3.0, operator=SUM, result=4.0, localDateTime=2024-08-04T20:16:20.377262}
+Operation{first=3.0, second=7.0, operator=SUM, result=10.0, localDateTime=2024-08-04T20:30:30.677508}
+Operation{first=3.0, second=6.0, operator=MULTIPLY, result=18.0, localDateTime=2024-08-04T20:31:05.723241}
+Operation{first=5.0, second=2.0, operator=SUBTRACTION, result=3.0, localDateTime=2024-08-04T20:31:51.102978}
+Operation{first=2.0, second=4.0, operator=SUM, result=6.0, localDateTime=2024-08-04T20:42:31.677376}
+Operation{first=3.0, second=1.0, operator=DIVIDE, result=3.0, localDateTime=2024-08-04T20:44:04.344225}
+Operation{first=2.0, second=4.0, operator=MULTIPLY, result=8.0, localDateTime=2024-08-04T20:55:10.700520}
